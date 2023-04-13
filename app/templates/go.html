@@ -1,0 +1,23 @@
+{% extends "master.html" %}  <!-- Inheriting from base template "master.html" -->
+
+{% block title %}Results{% endblock %}  <!-- Defining block "title" to set the page title as "Results" -->
+
+{% block message %}
+    <hr />
+    <h4 class="text-center">MESSAGE</h4>
+    <p class="text-center"><i>{{query}}</i></p>  <!-- Displaying a message to the user with the search query used -->
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Result</h1>  <!-- Displaying the main heading of the page -->
+        <ul class="list-group">
+            {% for category, classification in classification_result.items() %}
+                {% if classification == 1 %}
+                    <li class="list-group-item list-group-item-success text-center">{{category.replace('_', ' ').title()}}</li>  <!-- Displaying the category with successful classification -->
+                {% else %}
+                    <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li>  <!-- Displaying the category with failed classification -->
+                {% endif %}
+            {% endfor %}
+        </ul>  <!-- Closing the unordered list -->
+    </div>  <!-- Closing the div for the list container -->
+{% endblock %}  <!-- Closing the "content" block -->
